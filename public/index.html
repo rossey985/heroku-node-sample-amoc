@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Group Chat</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+</head>
+<style>
+	:root {--primary-red:red;--dark-maroon: red;--light-blue: cornsilk;--white: #ffffff;--primary-text: 	#A52A2A	 ;--secondary-text: black;--light-gray: black;}
+	* {margin: 0;padding: 0;box-sizing: border-box;}
+	body {font-family: Comic Sans MS;color: red;}
+	header {background-color: gray; text-align: center;height: 15%;}
+	#header1{padding-top: 20px;color: navy;}
+	.flex {display: flex;}
+	.flex-center {justify-content: center;align-items: center;}
+	.flex-column {display: flex;flex-direction: column;}
+	.flex-grow-1 {flex-grow: 1;}
+	.container {max-width: 600px;margin: 0 auto;}
+	.primary-text {color: blue;}
+	.secondary-text {color: var(--secondary-text);}
+	.light-text {color: var(--light-blue);}
+	.hidden {display: none;}
+	.text-center {text-align: center;}
+	.mb-2 {margin-bottom: 20px;}
+	#tit {font-weight: bold;font-size: 40px;}
+	#appContainer {height: 100vh;width: 100vw;align-items: stretch;background-image: url(https://media2.giphy.com/media/LHZyixOnHwDDy/giphy.gif?cid=790b761176deb7578240effbdd2b81a822bf793ff325198e&rid=giphy.gif);background-repeat:no-repeat;background-size: cover;}
+	#mainContent {width: 100%;justify-content: center;}
+	header .container {height: 100%;align-items: left;}
+	#login {background-color: mediumpurple;padding: 40px 100px;margin-top: -100px;height: 40%;border: 2px solid yellow;}
+	#loginForm {margin-top: 20px;position: relative;left: 100px;}input {height: 40px;padding: 10px;background-color: navy;border: none;	color: yellow;}
+	button .loginBtn {height: 40px;padding: 0 15px;background-color: gold;color: white;border: none;}
+	#sendBtn{height: 40px;padding: 0 5px;background-color: green;}
+	#chat {background-color: mediumspringgreen;height: 500px;margin: 25px 0;padding: 25px 25px;color: white;overflow-y: scroll;}
+	#mform1 {margin-bottom: 25px;}
+	.message {background-color: violet;padding: 20px;width: 80%;margin-bottom: 20px;padding: 1em;text-align: left;line-height: 1.5em;border-radius: .4em;}
+	.message-right {background: pink;color: maroon;margin-left: 20%;}
+	.message-right .message-date {color: maroon;}
+	.message-details {margin-bottom: 5px;}
+	.message-author {font-weight: 800;}
+	.message-date {font-weight: 100;font-size: 14px;}
+	.message-content {font-weight: bold;}
+	#users{background-image: yellow;position: relative;right: 50%;width: 40%;top: 30%;}
+</style>
+
+<body>
+	<header>
+		<center>
+			<h1 id="header1">Welcome To CheetChat!Let's Chat Now!!!</h1>
+		</center>
+	</header>
+
+	<div id="appContainer" class="flex-column">
+
+		<div align="left" class="hidden" div class="item" id=count  >
+			<h3 class="ui left aligned icon"></h3>
+			<h2><b> Active Users: </b><span id="counter"></span></h2>
+		</div>
+		<div align="left"  id=userLists>
+				<h3>
+					<ul id="users-connected"></ul>
+				</h3>
+			</div>
+			<div id="mainContent" class="container flex-grow-1 flex-column ">
+				<section id="login" class="">
+					<h2 id="tit" class="ui center aligned icon header">Let's Chat Now!!!</h2>
+					<form id="loginForm" class="flex">
+						<div class="ui left icon input">
+							<input class="from-control" type="text" placeholder="Username" name="username" id="usernameInput">
+						</div>
+					</form><br>
+					<center><button id="loginBtn" class="btn btn-primary btn-log">&nbsp;&nbsp;Login</button></center>
+				</section>
+				<section id="chat" class="flex-grow-1 flex-column hidden">
+					<div id="messagesList" class="flex-grow-1">
+						
+					</div>
+					<section id="chatroom">
+						<section id="typingalert"></section>
+					</section><br>
+				</section>
+				<form id="mform1" class="flex hidden">
+					<input class="form-control" type="text" name="message" id="messageInput" oninput="isTyping()" placeholder="type message here..." class="flex-grow-1">
+					<button class="btn btn-primary btn-log" id="sendBtn">Send&nbsp;&nbsp;</button>
+				</form>
+				<button id="logoutBtn" class="btn btn-primary btn-log " style="display:none">Sign Out</button>
+			</div>
+		</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+	<script src="app.js "></script>
+</body>
+</html>
